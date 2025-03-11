@@ -1,14 +1,15 @@
-```classDiagram
-    Invoice <|.. InvoiceHeader
-    Invoice <|.. InvoiceItem
-    InvoiceItem --|> Product
-    InvoiceItem --|> LineItem
-    Invoice --|> Customer
-    Invoice --|> Payment
-    Invoice --|> TaxRate
-    Invoice --|> Discount
-    Customer --|> Address
-    LineItem --|> Product
+```mermaid
+graph TD;
+    InvoiceHeader --> Invoice;
+    InvoiceItem --> Invoice;
+    InvoiceItem --> Product;
+    InvoiceItem --> LineItem;
+    Invoice --> Customer;
+    Invoice --> Payment;
+    Invoice --> TaxRate;
+    Invoice --> Discount;
+    Customer --> Address;
+    LineItem --> Product;
 ```
     Invoice : +generateInvoiceNumber()
     Invoice : +calculateTotalAmountDue()
