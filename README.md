@@ -1,7 +1,8 @@
+```mermaid
 classDiagram
 class Invoice {
-- InvoiceID : int
-- InvoiceDate : Date
+    - InvoiceID : int
+    - InvoiceDate : Date
 - CustomerID : int
 - TotalAmount : double
 }
@@ -45,3 +46,4 @@ class Address {
     Customer "1" -- "1" Address : has
 
 
+```
