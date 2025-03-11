@@ -1,4 +1,4 @@
-```mermaid
+```classDiagram
     Invoice <|.. InvoiceHeader
     Invoice <|.. InvoiceItem
     InvoiceItem --|> Product
