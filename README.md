@@ -44,6 +44,4 @@ class Address {
     InvoiceItem "1" -- "1" Product : uses
     Invoice "1" -- "*" Payment : has
     Customer "1" -- "1" Address : has
-
-
 ```
