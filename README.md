@@ -1,37 +1,47 @@
-```mermaid
-graph TD;
-    InvoiceHeader --> Invoice;
-    InvoiceItem --> Invoice;
-    InvoiceItem --> Product;
-    InvoiceItem --> LineItem;
-    Invoice --> Customer;
-    Invoice --> Payment;
-    Invoice --> TaxRate;
-    Invoice --> Discount;
-    Customer --> Address;
-    LineItem --> Product;
-```
-    Invoice : +generateInvoiceNumber()
-    Invoice : +calculateTotalAmountDue()
-    Invoice : +storeCustomerInformation()
-    Invoice : +storeLineItems()
-    Invoice : +generateInvoiceDocument()
-    InvoiceHeader : +storeInvoiceNumber()
-    InvoiceHeader : +storeInvoiceDate()
-    InvoiceItem : +calculateTotalCost()
-    InvoiceItem : +storeQuantity()
-    InvoiceItem : +storeUnitPrice()
-    Product : +storeProductName()
-    Product : +storeUnitPrice()
-    Customer : +storeCustomerName()
-    Customer : +storeCustomerAddress()
-    Address : +storeStreet()
-    Address : +storeCity()
-    Address : +storeState()
-    Address : +storeZip()
-    Payment : +storePaymentAmount()
-    Payment : +storePaymentMethod()
-    Payment : +storePaymentDate()
-    TaxRate : +storeTaxRate()
-    Discount : +storeDiscountAmount()
-    Discount : +storeDiscountType()
+classDiagram
+class Invoice {
+- InvoiceID : int
+- InvoiceDate : Date
+- CustomerID : int
+- TotalAmount : double
+}
+class Customer {
+- CustomerID : int
+- CustomerName : String
+- CustomerAddress : String
+- ContactPerson : String
+}
+class Product {
+- ProductID : int
+- ProductName : String
+- UnitPrice : double
+}
+class InvoiceItem {
+- InvoiceItemID : int
+- InvoiceID : int
+- ProductID : int
+- Quantity : int
+- TotalPrice : double
+}
+class Payment {
+- PaymentID : int
+- InvoiceID : int
+- PaymentDate : Date
+- PaymentAmount : double
+- PaymentMethod : String
+}
+class Address {
+- AddressID : int
+- Street : String
+- City : String
+- State : String
+- ZipCode : String
+}
+
+    Invoice "1" -- "*" InvoiceItem : contains
+    Invoice "1" -- "1" Customer : belongs to
+    InvoiceItem "1" -- "1" Product : uses
+    Invoice "1" -- "*" Payment : has
+    Customer "1" -- "1" Address : has
+
+
