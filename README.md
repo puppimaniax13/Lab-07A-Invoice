@@ -1,4 +1,4 @@
-classDiagram
+```mermaid
     Invoice <|.. InvoiceHeader
     Invoice <|.. InvoiceItem
     InvoiceItem --|> Product
@@ -9,7 +9,7 @@ classDiagram
     Invoice --|> Discount
     Customer --|> Address
     LineItem --|> Product
-
+```
     Invoice : +generateInvoiceNumber()
     Invoice : +calculateTotalAmountDue()
     Invoice : +storeCustomerInformation()
